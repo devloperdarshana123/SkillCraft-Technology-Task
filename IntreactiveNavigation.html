@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Beautiful Interactive Navigation Menu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f5f7fa;
+      min-height: 2000px; /* For scroll demo */
+    }
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: linear-gradient(90deg, #4f8cff 0%, #6ed6ff 100%);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      box-sizing: border-box;
+      transition: background 0.3s, box-shadow 0.3s;
+      z-index: 1000;
+      box-shadow: none;
+      height: 70px;
+    }
+    .navbar.scrolled {
+      background: linear-gradient(90deg, #3a5fcd 0%, #4fc3f7 100%);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    }
+    .navbar .logo {
+      font-size: 2rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      color: #fff;
+      text-shadow: 1px 2px 8px rgba(0,0,0,0.08);
+      display: flex;
+      align-items: center;
+    }
+    .navbar .logo span {
+      color: #ffe082;
+      margin-left: 8px;
+    }
+    .navbar ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+    }
+    .navbar li {
+      margin: 0 18px;
+    }
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1rem;
+      padding: 10px 14px;
+      border-radius: 6px;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      position: relative;
+    }
+    .navbar a:hover, .navbar a.active {
+      background: #fff;
+      color: #4f8cff;
+      box-shadow: 0 2px 8px rgba(79,140,255,0.12);
+    }
+    .navbar .search-bar {
+      margin-left: 30px;
+      position: relative;
+    }
+    .navbar input[type="text"] {
+      padding: 7px 32px 7px 12px;
+      border-radius: 20px;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      transition: box-shadow 0.2s;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+    .navbar .search-bar i {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #4f8cff;
+      font-size: 1.1rem;
+    }
+    .navbar .cta-btn {
+      margin-left: 30px;
+      background: #ffe082;
+      color: #333;
+      border: none;
+      border-radius: 20px;
+      padding: 9px 22px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 8px rgba(255,224,130,0.18);
+    }
+    .navbar .cta-btn:hover {
+      background: #fff;
+      color: #4f8cff;
+    }
+    /* Responsive */
+    @media (max-width: 900px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+        padding: 10px 20px;
+      }
+      .navbar ul {
+        flex-direction: column;
+        width: 100%;
+      }
+      .navbar li {
+        margin: 8px 0;
+      }
+      .navbar .search-bar, .navbar .cta-btn {
+        margin-left: 0;
+        margin-top: 10px;
+      }
+    }
+    /* Hero section for demo */
+    .hero {
+      margin-top: 90px;
+      text-align: center;
+      padding: 80px 20px 40px 20px;
+      background: linear-gradient(120deg, #e3f0ff 0%, #f5f7fa 100%);
+      border-radius: 0 0 40px 40px;
+      box-shadow: 0 4px 24px rgba(79,140,255,0.08);
+    }
+    .hero h1 {
+      font-size: 3rem;
+      color: #4f8cff;
+      margin-bottom: 18px;
+    }
+    .hero p {
+      font-size: 1.3rem;
+      color: #333;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  </style>
+  <!-- Font Awesome for search icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="logo">
+      <i class="fa-solid fa-bolt"></i>
+      <span>SkillCraft</span>
+    </div>
+    <ul>
+      <li><a href="#" class="active">Home</a></li>
+      <li><a href="#">Features</a></li>
+      <li><a href="#">Pricing</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <div class="search-bar">
+      <input type="text" placeholder="Search...">
+      <i class="fa fa-search"></i>
+    </div>
+    <button class="cta-btn">Get Started</button>
+  </nav>
+
+  <section class="hero">
+    <h1>Welcome to SkillCraft</h1>
+    <p>
+      Unlock your potential with our powerful platform. Explore features, connect with experts, and start your journey today!
+    </p>
+  </section>
+
+  <script>
+    // Change navbar style on scroll
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+  </script>
+</body>
+</html>

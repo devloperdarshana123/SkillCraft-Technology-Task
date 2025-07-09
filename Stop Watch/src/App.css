@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;900&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css');
 
 body, html, #root {
@@ -18,16 +18,16 @@ body, html, #root {
 
 .stopwatch-container {
   background: rgba(255,255,255,0.22);
-  border-radius: 28px;
+  border-radius: 32px;
   box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(14px);
   border: 1.5px solid rgba(255,255,255,0.18);
-  padding: 36px 28px 28px 28px;
-  width: 340px;
+  padding: 38px 32px 28px 32px;
+  width: 370px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 18px;
+  gap: 22px;
   position: relative;
   animation: popin 0.8s cubic-bezier(.68,-0.55,.27,1.55);
 }
@@ -40,62 +40,83 @@ body, html, #root {
 
 .stopwatch-container h2 {
   margin: 0 0 8px 0;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   color: #2563eb;
   letter-spacing: 1.5px;
   text-align: center;
+  font-weight: 900;
+  text-shadow: 0 2px 8px #a1c4fd44;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .stopwatch-time {
-  font-size: 2.2rem;
-  font-weight: 700;
+  font-size: 2.6rem;
+  font-weight: 900;
   color: #22223b;
   background: rgba(255,255,255,0.45);
-  border-radius: 16px;
-  padding: 18px 24px;
+  border-radius: 20px;
+  padding: 22px 30px;
   margin-bottom: 10px;
   letter-spacing: 2px;
-  min-width: 230px;
+  min-width: 250px;
   text-align: center;
-  box-shadow: 0 2px 8px rgba(161,196,253,0.10);
+  box-shadow: 0 2px 12px rgba(161,196,253,0.13);
+  border: 2.5px solid #4f8cff33;
+  transition: box-shadow 0.2s, border 0.2s;
+  animation: glow 2.5s infinite alternate;
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 16px #4f8cff33;}
+  100% { box-shadow: 0 0 32px #4f8cff66;}
 }
 
 .stopwatch-controls {
   display: flex;
-  gap: 12px;
+  gap: 14px;
   margin-bottom: 8px;
 }
 
 .stopwatch-controls button {
   border: none;
-  border-radius: 12px;
-  padding: 8px 16px;
-  font-size: 1rem;
-  font-weight: 600;
+  border-radius: 14px;
+  padding: 10px 20px;
+  font-size: 1.08rem;
+  font-weight: 700;
   cursor: pointer;
-  transition: background 0.18s, color 0.18s, box-shadow 0.18s;
-  box-shadow: 0 2px 8px rgba(161,196,253,0.08);
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s, transform 0.1s;
+  box-shadow: 0 2px 8px rgba(161,196,253,0.10);
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   outline: none;
+  user-select: none;
 }
 
 .stopwatch-controls .start {
   background: linear-gradient(90deg, #4f8cff 0%, #6ed6ff 100%);
   color: #fff;
+  box-shadow: 0 2px 12px #4f8cff33;
 }
 .stopwatch-controls .pause {
   background: linear-gradient(90deg, #ffd700 0%, #ffecb3 100%);
   color: #bfa100;
+  box-shadow: 0 2px 12px #ffd70033;
 }
 .stopwatch-controls .lap {
   background: #fff;
   color: #2563eb;
+  border: 1.5px solid #4f8cff33;
 }
 .stopwatch-controls .reset {
   background: #ef4444;
   color: #fff;
+  box-shadow: 0 2px 12px #ef444433;
+}
+.stopwatch-controls button:active {
+  transform: scale(0.96);
 }
 .stopwatch-controls button:disabled {
   opacity: 0.5;
@@ -105,27 +126,40 @@ body, html, #root {
 .stopwatch-laps {
   width: 100%;
   margin-top: 10px;
+  background: rgba(255,255,255,0.35);
+  border-radius: 14px;
+  padding: 10px 14px 8px 14px;
+  box-shadow: 0 1px 8px #4f8cff22;
+  border: 1.5px solid #4f8cff22;
+  animation: popin 0.7s;
 }
 .stopwatch-laps h4 {
-  margin: 0 0 6px 0;
-  font-size: 1.05rem;
+  margin: 0 0 8px 0;
+  font-size: 1.08rem;
   color: #2563eb;
   text-align: left;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 .stopwatch-laps ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  max-height: 120px;
+  max-height: 140px;
   overflow-y: auto;
 }
 .stopwatch-laps li {
   display: flex;
   justify-content: space-between;
-  padding: 4px 0;
-  font-size: 1rem;
+  padding: 6px 0;
+  font-size: 1.08rem;
   color: #22223b;
   border-bottom: 1px solid #e0e7ff44;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.stopwatch-laps li:nth-child(odd) {
+  background: rgba(79,140,255,0.07);
 }
 .stopwatch-laps li:last-child {
   border-bottom: none;
@@ -142,7 +176,7 @@ body, html, #root {
     padding: 10px 8px;
   }
   .stopwatch-controls button {
-    font-size: 0.9rem;
-    padding: 7px 8px;
+    font-size: 0.95rem;
+    padding: 8px 10px;
   }
 }
